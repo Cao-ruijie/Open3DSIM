@@ -1,5 +1,4 @@
 # Open3DSIM
-This code was created by Ruijie Cao and Prof. Peng Xi in Peking University for 3D SIM reconstruction.
 
 This code was created by Ruijie Cao and Prof. Peng Xi in Peking University for 3D super-resolution structure illumination microscopy reconstruction. We are devoted to make the SIM community open and constructive. And we will continue to improve the platform.
 
