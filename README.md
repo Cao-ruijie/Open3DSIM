@@ -12,4 +12,4 @@ Update on 2022.12.22. Here, we have updated the Fiji plugin 2022a version for us
 
 Update on 2022.12.25. Here, we thanks Dr Christophe Leterrier in Aix-Marseille Université for his data on N-SIM. We will make Open-3DSIM to be compatible to Nikon N-SIM system as soon as possible.
 
-Update on 2022.12.30. Here, we proposed Open_3DSIM_MATLAB_v1.1.zip and Open_3DSIM_Exe_v1.1.zip to be compatible to Nikon N-SIM system. The test data has been uploaded on Figshare above.
+Update on 2022.12.30. Here, we proposed Open_3DSIM_MATLAB_v1.1.zip and Open_3DSIM_Exe_v1.1.zip to be compatible to Nikon N-SIM system. The test data has been uploaded on Figshare (on the above Fishare link).
