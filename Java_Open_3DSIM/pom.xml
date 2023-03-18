@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+		http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.scijava</groupId>
+		<artifactId>pom-scijava</artifactId>
+		<version>31.1.0</version>
+		<relativePath />
+	</parent>
+
+	<groupId>com.mycompany</groupId>        <!-- FIXME: Your organization groupId here -->
+	<artifactId>Open3DSIM</artifactId> <!-- FIXME: Your project artifactId here   -->
+	<version>0.1.0-SNAPSHOT</version>
+
+	<name>Open3DSIM</name>                                               <!-- FIXME: Your project name here          -->
+	<description>A Maven project implementing an ImageJ command.</description> <!-- FIXME: Your project description here   -->
+	<url>https://mycompany.com/imagej/gauss-filtering/</url>                   <!-- FIXME: Your project website here       -->
+	<inceptionYear>2017</inceptionYear>                                        <!-- FIXME: Your project starting year here -->
+	<organization>
+		<name>My Company</name>           <!-- FIXME: Your organization name here    -->
+		<url>https://mycompany.com/</url> <!-- FIXME: Your organization website here -->
+	</organization>
+	<licenses>
+		<license>                         <!-- FIXME: Your license here -->
+			<name>Apache</name>
+			<url>https://apache.org/licenses/</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<!-- See https://imagej.net/Team -->
+		<developer>
+			<id>octocat</id>                                          <!-- FIXME: Your GitHub handle here -->
+			<name>Noma Onomatopoeia</name>                            <!-- FIXME: Your name here          -->
+			<url>https://mycompany.com/people/noma-onomatopoeia</url> <!-- FIXME: Your website here       -->
+			<roles>
+				<role>founder</role>
+				<role>lead</role>
+				<role>developer</role>
+				<role>debugger</role>
+				<role>reviewer</role>
+				<role>support</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>None</name>
+		</contributor>
+	</contributors>
+
+	<mailingLists>
+		<mailingList>
+			<name>Image.sc Forum</name>
+			<archive>https://forum.image.sc/tag/imagej</archive>
+		</mailingList>
+	</mailingLists>
+
+	<scm>
+		<connection>scm:git:https://github.com/imagej/example-imagej2-command</connection>
+		<developerConnection>scm:git:git@github.com:imagej/example-imagej2-command</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/imagej/example-imagej2-command</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/imagej/example-imagej2-command/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>None</system>
+	</ciManagement>
+
+	<properties>
+		<package-name>com.mycompany.imagej</package-name>                   <!-- FIXME: Your project package prefix here -->
+		<main-class>com.mycompany.imagej.Open3DSIM</main-class>        <!-- FIXME: Your project main class here, or delete for none -->
+		<license.licenseName>cc0</license.licenseName>                      <!-- FIXME: Your license-maven-plugin license code here -->
+		<license.copyrightOwners>My Company, Inc.</license.copyrightOwners> <!-- FIXME: Your organization legal entity name here -->
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>scijava.public</id>
+			<url>https://maven.scijava.org/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>imagej</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>READ_DATA</artifactId>
+			<version>6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>PROCESS_DATA</artifactId>
+			<version>6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>pSIM</artifactId>
+			<version>5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>FILTER</artifactId>
+			<version>5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>bUnwarpJ_-2.6.5</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>forthDD-API</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>ij149v</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>javax.xml.bind</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>JLargeArrays-1.6</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>JTransforms-3.1</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>MMCoreJ</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>MMJ_</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>javabuilder</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>nrjavaserial-3.12.0</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mycompany</groupId>
+			<artifactId>jtransforms_fairSIM_fork</artifactId>
+			<version>2.0</version>
+		</dependency>
+
+	
+	</dependencies>
+</project>
