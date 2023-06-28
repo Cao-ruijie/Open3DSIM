@@ -1,1 +1,1 @@
-The output images will be saved here
+The output images will be saved here.

@@ -11,6 +11,10 @@ kz = q0ex-sqrt(q0ex^2-1/kxy.^2);
 qvector(3) = kz*Nz*dataparams.SIMpixelsize(3);
 qvector_z = qvector(3);
 qvector(1:2) = patternpitch;
+% single-layer
+if Nz==1
+    qvector(3)=0;
+end
 
 %% Compute notch-filter
 XSupport = ((1:Nx)-floor(Nx/2)-1); % qx grid
@@ -19,12 +23,17 @@ ZSupport = ((1:Nz)-floor(Nz/2)-1); % qz grid
 [qx,qy,qz] = meshgrid(XSupport,YSupport,ZSupport); 
 notchwidthxy = dataparams.notchwidthxy1; % notch width
 notchdips = dataparams.notchdips1;       % notch depth
-qradsq = ( qx/qvector_xy ).^2+( qy/qvector_xy ).^2+( qz/qvector_z ).^2;
+if Nz ~=1
+    qradsq = ( qx/qvector_xy ).^2+( qy/qvector_xy ).^2+( qz/qvector_z ).^2;
+else
+    qradsq = ( qx/qvector_xy/2 ).^2+( qy/qvector_xy/2 ).^2+( qz/qvector_z/2 ).^2;
+end
 notch = 1 - notchdips*exp(-qradsq/2/notchwidthxy^2);
 Mask = ones(Nx,Ny,Nz);
 Mask(abs(dataparams.OTFem)<0.001)=0;     % notch mask
 notch = notch.*Mask;
 notch = notch./max(max(max(notch)));     % normalize
+OTFtemp(OTFtemp>0.4)=0.4;
 OTFtemp1 = OTFtemp.*notch;
 clear dataparams qx qy qz XSupport YSupport ZSupport notch qradsq
 
@@ -39,13 +48,17 @@ for jorder = 1:maxorder
             ftshiftorderims(:,:,2,jNz) = double(shift(squeeze(tempimage(:,:,2,jNz)),[m*qvector(1)/2,m*qvector(2)/2]));
             OTFshift0(:,:,2,jNz) = 0.5*double(shift(squeeze(OTFtemp1(:,:,jNz)),[m*qvector(1)/2,m*qvector(2)/2]));
         end
-        OTFshift0(:,:,2,:) = double(shift(squeeze(OTFshift0(:,:,2,:)),[0,0,qvector(3)])) + double(shift(squeeze(OTFshift0(:,:,2,:)),[0,0,-qvector(3)]));  
+        if Nz~=1
+            OTFshift0(:,:,2,:) = double(shift(squeeze(OTFshift0(:,:,2,:)),[0,0,qvector(3)])) + double(shift(squeeze(OTFshift0(:,:,2,:)),[0,0,-qvector(3)])); 
+        end
     elseif jorder == 3 % -1th frequency
         for jNz = 1:Nz
             ftshiftorderims(:,:,3,jNz) = double(shift(squeeze(tempimage(:,:,3,jNz)),[-m*qvector(1)/2,-m*qvector(2)/2])); 
             OTFshift0(:,:,3,jNz) = 0.5*double(shift(squeeze(OTFtemp1(:,:,jNz)),[-m*qvector(1)/2,-m*qvector(2)/2]));
         end
-        OTFshift0(:,:,3,:) = double(shift(squeeze(OTFshift0(:,:,3,:)),[0,0,qvector(3)])) + double(shift(squeeze(OTFshift0(:,:,3,:)),[0,0,-qvector(3)]));
+        if Nz~=1
+            OTFshift0(:,:,3,:) = double(shift(squeeze(OTFshift0(:,:,3,:)),[0,0,qvector(3)])) + double(shift(squeeze(OTFshift0(:,:,3,:)),[0,0,-qvector(3)]));
+        end
     elseif jorder == 4 % 2th frequency
         for jNz = 1:Nz
             ftshiftorderims(:,:,4,jNz) = double(shift(squeeze(tempimage(:,:,4,jNz)),[m*qvector(1),m*qvector(2)]));

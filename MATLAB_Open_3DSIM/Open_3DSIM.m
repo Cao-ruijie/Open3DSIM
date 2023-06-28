@@ -50,7 +50,7 @@ if read_type == 1
     NA = 1.4;                   % objective lens NA
     refmed = 1.47;              % refractive index medium
     refcov = 1.512;             % refractive index cover slip
-    refimm = 1.518;             % refractive index immersion medium
+    refimm = 1.515;             % refractive index immersion medium
     exwavelength = 488;         % excitation wavelengths
     emwavelength = 528;         % emission wavelengths
     fwd = 140e3;                % free working distance from objective to cover slip

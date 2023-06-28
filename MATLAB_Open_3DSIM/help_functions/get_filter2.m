@@ -91,6 +91,17 @@ epsy = 1e2*eps;
 Apo = 1-qrad./cutoffmap;
 Apo = Apo + abs(min(min(Apo)));
 
-Filter2 = Apo./(params.OTFshiftfinal+lambdaregul); 
+
+if Nz ==1
+    temp = params.OTFshiftfinal;
+    max_ = max(max(params.OTFshiftfinal));
+    temp(temp<0.5*max_) = 0.4*max_;
+    Filter2=Apo./(temp+lambdaregul); 
+else
+    Filter2 = Apo./(params.OTFshiftfinal+lambdaregul);
+end
 Filter2(isnan(Filter2)) = epsy;
+
+
+
 end

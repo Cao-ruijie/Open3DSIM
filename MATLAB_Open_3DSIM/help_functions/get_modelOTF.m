@@ -1,4 +1,7 @@
 function [OTF_orders,OTF_every_slide] = get_modelOTF(dataparams,SIMparams)
+
+% copyright Sjoerd Stallinga, TU Delft, 2017-2020
+
 %% Basic parameters
 Nx = SIMparams.numSIMpixelsx;
 Ny = SIMparams.numSIMpixelsy;

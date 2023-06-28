@@ -50,14 +50,6 @@ for jangle = 1:numangles
     Snoisy(:,:,(jangle-1)*5+1:(jangle-1)*5+5) = tempimage;
 end
 
-%%%%%%%%%%%%%%%%%%%%%
-% maxnum = max(max(max(Snoisy)));
-% Snoisy = Snoisy./maxnum;
-% stackfilename = ['Snoisy.tif'];
-% for k = 1:15
-%     imwrite(Snoisy(:,:,k), stackfilename, 'WriteMode','append') % Ð´ÈëstackÍ¼Ïñ
-% end
-%%%%%%%%%%%%%%%%%%%%%
 %% Get the frequency, phase and modulation depth
 [dataparams,~] = find_illumination_pattern(Snoisy,dataparams);
 freq = dataparams.allpatternpitch;
@@ -98,7 +90,6 @@ end
 dataparams.allmoduleave = allmodule;
 clear allmodule
 
-%% Get OTFem
 SIMparams.upsampling = [2 2 1];                     % interperation
 numSIMpixelsx = SIMparams.upsampling(1)*numpixelsx; % X pixels of final SIM image
 numSIMpixelsy = SIMparams.upsampling(2)*numpixelsy; % y pixels of final SIM image
@@ -109,10 +100,16 @@ SIMparams.SIMpixelsize = SIMpixelsize;
 SIMparams.numSIMpixelsx = numSIMpixelsx;
 SIMparams.numSIMpixelsy = numSIMpixelsy;
 SIMparams.numSIMpixelsz = numSIMpixelsz;
+
+%% Get OTFem
+if dataparams.Nz~=1
 if OTFflag == 1
     [OTFem,~] = get_modelOTF(dataparams,SIMparams);
 elseif OTFflag == 0
     [~,OTFem]= get_calibrationOTF(OTF_name,SIMparams,numpixelsx,numpixelsy,dataparams.rawpixelsize);
+end
+else
+    OTFem = SimOtfProvider2( dataparams,SIMparams,NA,emwavelength,numSIMpixelsx,1);
 end
 dataparams.OTFem = OTFem;
 

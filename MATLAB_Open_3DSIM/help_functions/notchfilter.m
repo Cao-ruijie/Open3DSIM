@@ -10,6 +10,10 @@ kz = q0ex-sqrt(q0ex^2-1/kxy.^2);                            % shift on yoz plane
 qvector(3) = 1.0*double(1.0*kz*Nz*dataparams.SIMpixelsize(3));
 qvector_z = qvector(3);
 qvector(1:2) = double(1.0*patternpitch);
+% single-layer
+if dataparams.Nz==1
+    qvector(3)=0;
+end
 
 %% Calculate notch-filter
 XSupport = ((1:Nx)-floor(Nx/2)-1);         % qx grid
@@ -18,11 +22,17 @@ ZSupport = ((1:Nz)-floor(Nz/2)-1);         % qz grid
 [qx,qy,qz] = meshgrid(XSupport,YSupport,ZSupport); 
 notchwidthxy = dataparams.notchwidthxy2;   % notch width
 notchdips = dataparams.notchdips2;         % notch depth
-qradsq = ( qx/qvector_xy ).^2+( qy/qvector_xy ).^2+( qz/qvector_z ).^2;
+if Nz ~=1
+    qradsq = ( qx/qvector_xy ).^2+( qy/qvector_xy ).^2+( qz/qvector_z ).^2;
+else
+    qradsq = ( qx/qvector_xy/2 ).^2+( qy/qvector_xy/2 ).^2+( qz/qvector_z/2 ).^2;
+end
 notch = 1 - notchdips*exp(-qradsq/2/notchwidthxy^2);
 Mask = ones(Nx,Ny,Nz);
 Mask(abs(dataparams.OTFem)<0.01)=0;
-notch = notch.*Mask.*abs(dataparams.OTFem).^(attenuation)./max(max(max(abs(dataparams.OTFem))));
+OTFtemp = dataparams.OTFem;
+OTFtemp(OTFtemp>0.4)=0.4;
+notch = notch.*Mask.*abs(OTFtemp).^(attenuation);
 notch = notch./max(max(max(notch)));
 
 %% shift the separated frequency of 0,¡À1,¡À2 and do the notch operation
@@ -36,14 +46,18 @@ for jorder = 1:maxorder
         for jNz = 1:Nz
             anneuation(:,:,jNz) = double(shift(squeeze(notch(:,:,jNz)),[m*qvector(1)/2,m*qvector(2)/2]));
         end
-        anneuation(:,:,:) =double(shift(squeeze(anneuation(:,:,:)),[0,0,qvector(3)])) + double(shift(squeeze(anneuation(:,:,:)),[0,0,-qvector(3)]));
+        if Nz~=1
+            anneuation(:,:,:) =double(shift(squeeze(anneuation(:,:,:)),[0,0,qvector(3)])) + double(shift(squeeze(anneuation(:,:,:)),[0,0,-qvector(3)]));
+        end
         anneuation(anneuation<0) = 0;
         ftshiftorderims(:,:,2,:) = squeeze(tempimage(:,:,2,:)).*anneuation(:,:,:)/2;
     elseif jorder == 3  % -1th frequency
         for jNz = 1:Nz
             anneuation(:,:,jNz) = double(shift(squeeze(notch(:,:,jNz)),[-m*qvector(1)/2,-m*qvector(2)/2]));
         end
-        anneuation(:,:,:) = double(shift(squeeze(anneuation(:,:,:)),[0,0,qvector(3)])) + double(shift(squeeze(anneuation(:,:,:)),[0,0,-qvector(3)]));
+        if Nz~=1
+            anneuation(:,:,:) = double(shift(squeeze(anneuation(:,:,:)),[0,0,qvector(3)])) + double(shift(squeeze(anneuation(:,:,:)),[0,0,-qvector(3)]));
+        end
         anneuation(anneuation<0) = 0;
         ftshiftorderims(:,:,3,:) = squeeze(tempimage(:,:,3,:)).*anneuation(:,:,:)/2;
     elseif jorder == 4  % 2th frequency

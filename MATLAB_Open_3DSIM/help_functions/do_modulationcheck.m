@@ -1,5 +1,7 @@
 function [MCNR_ims,allmodulations] = do_modulationcheck(allimages_in)
 
+% copyright Sjoerd Stallinga, TU Delft, 2017-2020
+
 %% define parameter
 [Nx,Ny,numsteps,numfocus,numchannels,numframes,numangles] = size(allimages_in);
 maxorder = (numsteps+1)/2; % this assumes that the # independent image Fourier orders = # phase steps

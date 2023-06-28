@@ -1,11 +1,7 @@
 function [ld, psim] = psim_sim3d_recon(raw_sim3d, sim_s, theta, calib)
-%% calib
-% if size(calib{1},1) == 1024
-%     fov = size(raw_sim3d,1);
-%     calib1 = calib{1}; calib2 = calib{2};
-%     calib{1} = calib1((513-fov/2):(512+fov/2),(513-fov/2):(512+fov/2)); 
-%     calib{2} = calib2((513-fov/2):(512+fov/2),(513-fov/2):(512+fov/2));
-% end
+
+% copyright Karl Zhanghao, 2019
+
 %% Calculate frequency components on orientational dimension
 % obtain polarized wide field images
 d1_s = mean(raw_sim3d(:,:,1:5),3); 

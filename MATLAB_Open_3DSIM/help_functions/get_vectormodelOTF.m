@@ -1,7 +1,5 @@
 function [OTFinc,OTFinc2d_throughfocus] = get_vectormodelOTF(OTFparams)
-  
-% copyright Sjoerd Stallinga TUD 2017-2020
-  
+
 %% Get pupil matrix
 [~,~,wavevector,wavevectorzmed,~,PupilMatrix] = get_pupil_matrix(OTFparams);
 

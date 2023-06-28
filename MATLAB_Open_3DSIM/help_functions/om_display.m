@@ -1,5 +1,8 @@
 function [wf, ld_om, cm, ouf, fig] = om_display(ld, cmin, cmax, is_display)
-%%
+
+% copyright Karl Zhanghao, 2019
+
+
 ld_s = mean(ld,3); 
 ld_s = max(ld_s-cmin, 0); 
 ld_s = min(ld_s/cmax, 1);
