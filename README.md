@@ -11,5 +11,5 @@ We are devoted to make the SIM community open and constructive. And we will cont
 
 For any questions, please contact caoruijie@stu.pku.edu.cn or xipeng@pku.edu.cn.
 
-If you use our code, please cite our Bioxiv paper: Cao R, Li Y, Chen X, et al. Open-3DSIM: an Open-source three-dimensional structured illumination microscopy reconstruction platform[J]. Nature Methods.
+If you use our code, please cite our Bioxiv paper: Cao R, Li Y, Chen X, et al. Open-3DSIM: an Open-source three-dimensional structured illumination microscopy reconstruction platform[J]. Nature Methods: 1-4.
 https://www.nature.com/articles/s41592-023-01958-0
