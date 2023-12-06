@@ -22,3 +22,8 @@ Reference
 Contact us
 
     For any questions, please contact caoruijie@stu.pku.edu.cn or xipeng@pku.edu.cn.
+
+Updates:
+
+    2023.12.06 Someone reflects that Open-3DSIM(Fiji v2.2) has a bug on the step of "Process data". We have correct it.
+    2023.06.28 We added the reconstruction of single-layer 3DSIM in version 2.2.
