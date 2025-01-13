@@ -19,7 +19,7 @@ Reference
     Cao R, Li Y, Chen X, et al. Open-3DSIM: an Open-source three-dimensional structured illumination microscopy reconstruction platform[J]. Nature Methods: 1-4 (2023).
     https://www.nature.com/articles/s41592-023-01958-0
 
-Contact us
+Contact us:
 
     For any questions, please contact caoruijie@stu.pku.edu.cn or xipeng@pku.edu.cn.
 
