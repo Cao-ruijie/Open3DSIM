@@ -27,3 +27,9 @@ Updates:
 
     2023.12.06 Someone reflects that Open-3DSIM(Fiji v2.2) has a bug on the step of "Process data". We have correct it.
     2023.06.28 We added the reconstruction of single-layer 3DSIM in version 2.2.
+
+Tips:
+
+    Recently, we proposed an accelerated 3DSIM reconstruction based on spatial method called FO-3DSIM: https://github.com/Cao-ruijie
+    Open-3DSIM is robust and multi-platform compatible, but relatively slow. FO-3DSIM is fast but needs specifically tuned.
+    Users can choose according to their requirements.
