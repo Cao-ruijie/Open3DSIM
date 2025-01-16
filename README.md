@@ -30,6 +30,6 @@ Updates:
 
 Tips:
 
-    Recently, we proposed an accelerated 3DSIM reconstruction based on spatial method called FO-3DSIM: https://github.com/Cao-ruijie
-    Open-3DSIM is robust and multi-platform compatible, but relatively slow. FO-3DSIM is fast but needs specifically tuned.
+    Recently, we proposed an accelerated 3DSIM reconstruction based on spatial method called FO-3DSIM: https://github.com/Cao-ruijie/FO-3DSIM
+    Open-3DSIM is robust and multi-platform compatible. FO-3DSIM is accelerated compared with Open-3DSIM, but needs specifically tuned.
     Users can choose according to their requirements.
